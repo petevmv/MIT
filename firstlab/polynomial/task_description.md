@@ -1,5 +1,5 @@
-Objective: Define a Python class Polynomial which provides methods for performing algebraic operations on polynomials. Your class should behave as described in the following sample transcript:
->>> p1 = Polynomial([1, 2, 3])
+# Objective: Define a Python class Polynomial which provides methods for performing algebraic operations on polynomials. Your class should behave as described in the following sample transcript:
+```>>> p1 = Polynomial([1, 2, 3])
 >>> p1
 1.000 z**2 + 2.000 z + 3.000
 >>> p2 = Polynomial([100, 200])
@@ -27,4 +27,4 @@ Objective: Define a Python class Polynomial which provides methods for performin
 >>> p3.roots()
 [-1.0, 0.33333333333333331]
 >>> (p1 * p1).roots()
-Order too high to solve for roots.
+Order too high to solve for roots.```
