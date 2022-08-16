@@ -8,6 +8,10 @@ class Polynomial:
 		self.eq = ''
 		self.coefficients = coefficients
 		self.degree = len(coefficients) - 1
+
+
+	# def val(value):
+
 		
 
 	def add(self, other):
@@ -54,7 +58,7 @@ class Polynomial:
 			else: 
 				sing = '-'
 			
-			eq = eq + f" {self.coefficients[idx]}{Polynomial.expr_x(len(self.coefficients) - idx - 1)} {sing}"
+			eq = eq + f" {self.coefficients[idx]}{Polynomial.expr_x(self.degree - idx )} {sing}"
 
 		return eq.rstrip('+').strip()
 	
