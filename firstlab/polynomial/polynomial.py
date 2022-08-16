@@ -5,14 +5,17 @@ class Polynomial:
 	# (5 елемента -> у-е от 4та степен) 
 	# 
 	def __init__(self, coefficients):
-		self.eq = ''
+		self.equation = ''
 		self.coefficients = coefficients
 		self.degree = len(coefficients) - 1
 
 
-	# def val(value):
+	def val(self, value):
+		result = [x * value ** (self.degree - idx)  for idx, x in enumerate(self.coefficients)]
+		return sum(result)
 
-		
+	def __call__(self, x):
+		return self.val(x)
 
 	def add(self, other):
 		p1 = self.coefficients
@@ -30,22 +33,22 @@ class Polynomial:
 
 
 	def expr_x(degree):
-			eq = ''
+			equation = ''
 			
 			if degree == 0:
-				eq = ''
+				equation = ''
 			
 			elif degree == 1:
-				eq = 'z'
+				equation = 'z'
 			
 			else:
-				eq = f'z**{degree}'
+				equation = f'z**{degree}'
 			
-			return eq
+			return equation
 
 
 	def __str__(self):
-		eq = ''
+		equation = ''
 		
 		for idx, el in enumerate(self.coefficients):
 			
@@ -58,9 +61,9 @@ class Polynomial:
 			else: 
 				sing = '-'
 			
-			eq = eq + f" {self.coefficients[idx]}{Polynomial.expr_x(self.degree - idx )} {sing}"
+			equation = equation + f" {self.coefficients[idx]}{Polynomial.expr_x(self.degree - idx)} {sing}"
 
-		return eq.rstrip('+').strip()
+		return equation.rstrip('+').strip()
 	
 	def __repr__(self):
 		return str(tuple(self.coefficients))
@@ -72,9 +75,10 @@ class Polynomial:
 # p4 = Polynomial([1, 2, 0, 4])
 
 p1 = Polynomial([1,2,3])
-p2 = Polynomial([100, 200])
-print(p1.add(p2))
-print(p1 + p2)
+# p2 = Polynomial([100, 200])
+# print(p1.add(p2))
+# print(p1 + p2)
+print(p1(1))
 
 
 # print(p1)
