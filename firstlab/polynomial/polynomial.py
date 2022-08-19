@@ -40,14 +40,15 @@ class Polynomial:
 			a, b, c = self.coefficients
 			D = b**2 - 4 * a * c
 			if D == 0:
-				return [-b/2*a]
-			x1 = (-b + math.sqrt(D)) / (2 * a)
-			x2 = (-b - math.sqrt(D)) / (2 * a)	
-			return [x1,x2]
+				return [- b / 2 * a]
+			x1 = (- b + math.sqrt(D)) / (2 * a)
+			x2 = (- b - math.sqrt(D)) / (2 * a)	
+			return [x1, x2]
+
 		elif self.degree == 1:
-			a,b = self.coefficients
-			print(a,b)
-			x1 = -b/a
+			a, b = self.coefficients
+			print(a, b)
+			x1 = - b / a
 			return [x1]
  
 
@@ -141,9 +142,10 @@ class Polynomial:
 # p3 = Polynomial([-10, 2, 1])
 # p4 = Polynomial([1, 2, 0, 4])
 
-p1 = Polynomial([1,2,3])
+p1 = Polynomial([1, 2, 3])
 p2 = Polynomial([100, 200])
-p3 = Polynomial([3,2,-1])
+p3 = Polynomial([3, 2, -1])
+p4 = Polynomial([1, 8, 16])
 
 # print(p1.add(p2))
 # print((p1 + p2)(10))
@@ -153,3 +155,4 @@ print(p1.mul(p2))
 print(p1 * p2 + p1)
 print(p3.roots())
 print(p2.roots())
+print(p4.roots())
