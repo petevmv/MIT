@@ -1,4 +1,5 @@
 from collections import defaultdict
+import math
 
 class Polynomial:
 
@@ -30,6 +31,25 @@ class Polynomial:
 	def val(self, value):
 		result = [x * value ** (self.degree - idx)  for idx, x in enumerate(self.coefficients)]
 		return sum(result)
+
+	def roots(self):
+		 # compute roots of the equation
+		if self.degree > 2:
+			print("Order too high to solve for roots")
+		if self.degree == 2:
+			a, b, c = self.coefficients
+			D = b**2 - 4 * a * c
+			if D == 0:
+				return [-b/2*a]
+			x1 = (-b + math.sqrt(D)) / (2 * a)
+			x2 = (-b - math.sqrt(D)) / (2 * a)	
+			return [x1,x2]
+		elif self.degree == 1:
+			a,b = self.coefficients
+			print(a,b)
+			x1 = -b/a
+			return [x1]
+ 
 
 	def __call__(self, x):
 		return self.val(x)
@@ -123,11 +143,13 @@ class Polynomial:
 
 p1 = Polynomial([1,2,3])
 p2 = Polynomial([100, 200])
-
+p3 = Polynomial([3,2,-1])
 
 # print(p1.add(p2))
 # print((p1 + p2)(10))
 # print(p1(-1))
 # print(p1.mul(2))
 print(p1.mul(p2))
-print(p1 * p2)
+print(p1 * p2 + p1)
+print(p3.roots())
+print(p2.roots())
