@@ -44,7 +44,7 @@ class Polynomial:
 			x1 = (- b + D ** 0.5) / (2 * a)
 			x2 = (- b - D ** 0.5) / (2 * a)	
 			if D == 0:
-				return [- b / 2 * a]
+				return [- b / (2 * a)]
 			if D > 0:		
 				return [x1, x2]
 			
