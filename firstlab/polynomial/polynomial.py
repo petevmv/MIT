@@ -81,33 +81,48 @@ class Polynomial:
 
 		order_p1 = self.degree
 		order_p2 = other.degree
-		# print(p1,order_p1, p2, order_p2)
-		
-		tup_p1 = []
-		tup_p2 = []
-		
-		for i in p1:
-			tup_p1.append((i, order_p1))
-			order_p1 -= 1
-		for i in p2:
-			tup_p2.append((i, order_p2))
-			order_p2 -= 1
-		tup_of_coeff_and_power = []
-		for x in tup_p1:
-			for y in tup_p2:
-				tup_of_coeff_and_power.append((x[0] * y[0], x[1] + y[1]))
-		# print(tup_of_coeff_and_power)
-
-		# This block of code will add all coeffs of the same order
-		d = defaultdict(float)
-
-		for x, y in tup_of_coeff_and_power:
-			d[y] += float(x)
-
-		# returning to list structure to pass it to polynomial class
+		pow = 0
+		product = {}
+		for i, j in enumerate(p1):
+			for I, J in enumerate(p2):
+				pow = i + I
+				if order_p1 + order_p2 - pow not in product:
+					product[order_p1 + order_p2 - pow] = j * J
+				else:
+					product[order_p1 + order_p2 - pow] += j * J
 		result = []
-		for x in d.items():
-			result.append(x[1])
+
+		for order, coeff in product.items():
+			result.append(coeff)
+
+		# print(p1,order_p1, p2, order_p2)
+
+		
+		# tup_p1 = []
+		# tup_p2 = []
+		
+		# for i in p1:
+		# 	tup_p1.append((i, order_p1))
+		# 	order_p1 -= 1
+		# for i in p2:
+		# 	tup_p2.append((i, order_p2))
+		# 	order_p2 -= 1
+		# tup_of_coeff_and_power = []
+		# for x in tup_p1:
+		# 	for y in tup_p2:
+		# 		tup_of_coeff_and_power.append((x[0] * y[0], x[1] + y[1]))
+		# # print(tup_of_coeff_and_power)
+
+		# # This block of code will add all coeffs of the same order
+		# d = defaultdict(float)
+
+		# for x, y in tup_of_coeff_and_power:
+		# 	d[y] += float(x)
+
+		# # returning to list structure to pass it to polynomial class
+		# result = []
+		# for x in d.items():
+		# 	result.append(x[1])
 
 		return Polynomial(result)
 
@@ -151,8 +166,4 @@ p4 = Polynomial([1, 8, 16])
 # print((p1 + p2)(10))
 # print(p1(-1))
 # print(p1.mul(2))
-print(p1.mul(p2))
-print(p1 * p2 + p1)
-print(p3.roots())
-print(p2.roots())
-print(p4.roots())
+print(p1.mul(2))
