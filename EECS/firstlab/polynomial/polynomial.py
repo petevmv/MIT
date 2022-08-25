@@ -1,4 +1,4 @@
-from collections import defaultdict
+# from collections import defaultdict
 
 
 class Polynomial:
@@ -13,7 +13,7 @@ class Polynomial:
         self.coefficients = coefficients
         self.degree = len(coefficients) - 1
 
-    def expresion_of_x(degree):
+    def build_visual_of_equation(degree):
         equation = ""
 
         if degree == 0:
@@ -39,7 +39,7 @@ class Polynomial:
     def roots(self):
         # compute roots of the equation
         if self.degree > 2:
-            print("Order too high to solve for roots")
+            return "Order too high to solve for roots"
         if self.degree == 2:
             a, b, c = self.coefficients
             D = b ** 2 - 4 * a * c
@@ -149,7 +149,7 @@ class Polynomial:
 
             equation = (
                 equation
-                + f" {self.coefficients[idx]}{Polynomial.expresion_of_x(self.degree - idx)} {sing}"
+                + f" {self.coefficients[idx]}{Polynomial.build_visual_of_equation(self.degree - idx)} {sing}"
             )
 
         return equation.rstrip("+").strip()
@@ -176,3 +176,4 @@ print(p1.roots())
 print(p2.roots())
 print(p3.roots())
 print(p4.roots())
+print((p1 * p2).roots())
