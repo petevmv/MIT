@@ -20,6 +20,17 @@ class TestPolynomial(unittest.TestCase):
             with self.subTest(f"{Polynomial(polynom)} / z={value} ==> {expected}"):
                 self.assertEqual(Polynomial(polynom).val(value), expected)
 
+    def test_roots(self):
+        test_roots = [
+            ([1, 2, 3], [-1 + 1j, -1 - 1j]),
+            ([100, 200], [-2.0]),
+            ([1, 8, 16], [-4.0]),
+            ([3, 2, -1], [0.3333333333333333, -1.0]),
+        ]
+        for coeff, expected in test_roots:
+            with self.subTest(f"{Polynomial(coeff)} roots are {expected}"):
+                self.assertEqual(Polynomial(coeff).roots(), expected)
+
 
 if __name__ == "__main__":
     unittest.main()
