@@ -155,7 +155,7 @@ class Polynomial:
         return equation.rstrip("+").strip()
 
     def __repr__(self):
-        return str(tuple(self.coefficients))
+        return str(self)
 
 
 # p1 = Polynomial([-1, 2, -3, 4])
