@@ -1,6 +1,4 @@
 import unittest
-
-from matplotlib.pyplot import polar
 from polynomial import Polynomial
 
 
