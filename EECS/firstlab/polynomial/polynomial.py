@@ -1,6 +1,5 @@
 # from collections import defaultdict
 
-
 class Polynomial:
 
     # създаване на у-то
@@ -20,7 +19,7 @@ class Polynomial:
             equation = ""
 
         elif degree == 1:
-            equation = "z"
+            equation = f"z"
 
         else:
             equation = f"z**{degree}"
@@ -149,10 +148,10 @@ class Polynomial:
 
             equation = (
                 equation
-                + f" {self.coefficients[idx]}{Polynomial.build_visual_of_equation(self.degree - idx)} {sing}"
+                + f"{sing} {abs(self.coefficients[idx])}{Polynomial.build_visual_of_equation(self.degree - idx)} "
             )
-
-        return equation.rstrip("+").strip()
+        equation = equation.strip("+")
+        return equation.strip()
 
     def __repr__(self):
         return str(self)
@@ -167,7 +166,7 @@ p1 = Polynomial([1, 2, 3])
 p2 = Polynomial([100, 200])
 p3 = Polynomial([3, 2, -1])
 p4 = Polynomial([1, 8, 16])
-
+problem_poly = Polynomial([-55, -8, 1, -7])
 # print(p1.add(p2))
 # print((p1 + p2)(10))
 # print(p1(-1))
@@ -176,4 +175,5 @@ p4 = Polynomial([1, 8, 16])
 # print(p2.roots())
 # print(p3.roots())
 # print(p4.roots())
-print(p1 * p2)
+# print(problem_poly)
+# print(problem_poly * p1)

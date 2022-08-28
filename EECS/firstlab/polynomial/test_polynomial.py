@@ -46,16 +46,33 @@ class TestPolynomial(unittest.TestCase):
             ):
                 self.assertEqual(f"{Polynomial(p1) + Polynomial(p2)}", expected)
 
-    def test_mul(self):
-        tests_mul = [
+    def test_mul_polynomes(self):
+        tests_mul_polynomes = [
             ([1, 2, 3], [100, 200], "100z**3 + 400z**2 + 700z + 600"),
             ([1, 2, 3], [1, 2, 3], "1z**4 + 4z**3 + 10z**2 + 12z + 9"),
+            (
+                [-55, -8, 1, -7],
+                [1, 2, 3],
+                "- 55z**5 - 118z**4 - 180z**3 - 29z**2 - 11z - 21",
+            ),
         ]
-        for p1, p2, expected in tests_mul:
+
+        for p1, p2, expected in tests_mul_polynomes:
             with self.subTest(
                 f"{Polynomial(p1)} multyplied by {Polynomial(p2)} should be equal to {Polynomial(p1) * Polynomial(p2)}"
             ):
                 self.assertEqual(f"{Polynomial(p1) * Polynomial(p2)}", expected)
+
+    def test_mul_by_scalar(self):
+        test_mul_by_scalar = [
+            ([1, 2, 3], 2, "2z**2 + 4z + 6"),
+            ([5, 8, 1, -7], 5, "25z**3 + 40z**2 + 5z - 35"),
+        ]
+        for p1, scalar, expected in test_mul_by_scalar:
+            with self.subTest(
+                f"{Polynomial(p1)} * by the scalar{scalar} should be {expected}"
+            ):
+                self.assertEqual(f"{Polynomial(p1) * scalar}", expected)
 
 
 if __name__ == "__main__":
