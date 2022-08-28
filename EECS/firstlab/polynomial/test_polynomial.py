@@ -50,6 +50,8 @@ class TestPolynomial(unittest.TestCase):
         tests_mul_polynomes = [
             ([1, 2, 3], [100, 200], "100z**3 + 400z**2 + 700z + 600"),
             ([1, 2, 3], [1, 2, 3], "1z**4 + 4z**3 + 10z**2 + 12z + 9"),
+            ([-1, -2, -3], [-1, -2, -3], "1z**4 + 4z**3 + 10z**2 + 12z + 9"),
+            [[-1, -2, -3], [1, 2, 3], "- 1z**4 - 4z**3 - 10z**2 - 12z - 9"],
             (
                 [-55, -8, 1, -7],
                 [1, 2, 3],
@@ -67,6 +69,8 @@ class TestPolynomial(unittest.TestCase):
         test_mul_by_scalar = [
             ([1, 2, 3], 2, "2z**2 + 4z + 6"),
             ([5, 8, 1, -7], 5, "25z**3 + 40z**2 + 5z - 35"),
+            ([1, 2, 3], -2, "- 2z**2 - 4z - 6"),
+            ([-1, -2, -3], -2, "2z**2 + 4z + 6"),
         ]
         for p1, scalar, expected in test_mul_by_scalar:
             with self.subTest(
