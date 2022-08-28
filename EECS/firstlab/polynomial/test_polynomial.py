@@ -15,6 +15,7 @@ class TestPolynomial(unittest.TestCase):
             ([2, 3, 4], 3, 31),
             ([2, 4], 5, 14),
             ([1, 2, 3, 4], 3, 58),
+            ([1, 2, 3], -1, 2),
         ]
         for polynom, value, expected in tests_equation_val_expected:
             with self.subTest(f"{Polynomial(polynom)} / z={value} ==> {expected}"):
@@ -41,9 +42,20 @@ class TestPolynomial(unittest.TestCase):
         ]
         for p1, p2, expected in tests_for_add:
             with self.subTest(
-                f"sum of {Polynomial(p1)} and {Polynomial(p2)} should be {expected}"
+                f"sum of {Polynomial(p1)} and {Polynomial(p2)} should be {Polynomial(p1) + Polynomial(p2)}"
             ):
                 self.assertEqual(f"{Polynomial(p1) + Polynomial(p2)}", expected)
+
+    def test_mul(self):
+        tests_mul = [
+            ([1, 2, 3], [100, 200], "100z**3 + 400z**2 + 700z + 600"),
+            ([1, 2, 3], [1, 2, 3], "1z**4 + 4z**3 + 10z**2 + 12z + 9"),
+        ]
+        for p1, p2, expected in tests_mul:
+            with self.subTest(
+                f"{Polynomial(p1)} multyplied by {Polynomial(p2)} should be equal to {Polynomial(p1) * Polynomial(p2)}"
+            ):
+                self.assertEqual(f"{Polynomial(p1) * Polynomial(p2)}", expected)
 
 
 if __name__ == "__main__":
