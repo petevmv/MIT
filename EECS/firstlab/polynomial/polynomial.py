@@ -96,7 +96,7 @@ class Polynomial:
                     product[order_p1 + order_p2 - pow] += j * J
         result = []
 
-        for order, coeff in product.items():
+        for coeff in product.values():
             result.append(coeff)
 
         # print(p1,order_p1, p2, order_p2)
@@ -176,4 +176,4 @@ problem_poly = Polynomial([-55, -8, 1, -7])
 # print(p3.roots())
 # print(p4.roots())
 # print(problem_poly)
-# print(problem_poly * p1)
+print(problem_poly * p1)
